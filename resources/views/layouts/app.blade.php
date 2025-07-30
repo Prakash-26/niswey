@@ -8,25 +8,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="{{ route('contacts.index') }}">
-                <i class="fas fa-address-book me-2"></i>Contact Manager
-            </a>
-            <div class="navbar-nav ms-auto">
-                <a class="nav-link" href="{{ route('contacts.index') }}">
-                    <i class="fas fa-list me-1"></i>All Contacts
-                </a>
-                <a class="nav-link" href="{{ route('contacts.create') }}">
-                    <i class="fas fa-plus me-1"></i>Add Contact
-                </a>
-                <a class="nav-link" href="{{ route('contacts.import.form') }}">
-                    <i class="fas fa-upload me-1"></i>Import XML
-                </a>
-            </div>
-        </div>
-    </nav>
-
     <div class="container mt-4">
         @if(session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">

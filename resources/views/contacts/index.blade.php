@@ -82,7 +82,7 @@
 
     <!-- Pagination -->
     <div class="d-flex justify-content-center mt-4">
-        {{ $contacts->links() }}
+        {{ $contacts->links("pagination::bootstrap-4") }}
     </div>
 @else
     <div class="text-center">

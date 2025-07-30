@@ -8,33 +8,20 @@ use Illuminate\Support\Facades\Validator;
 
 class ContactController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $contacts = Contact::paginate(10);
         return view('contacts.index', compact('contacts'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function create()
     {
         return view('contacts.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -56,37 +43,21 @@ class ContactController extends Controller
             ->with('success', 'Contact created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function show($id)
     {
         $contact = Contact::findOrFail($id);
         return view('contacts.show', compact('contact'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit($id)
     {
         $contact = Contact::findOrFail($id);
         return view('contacts.edit', compact('contact'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, $id)
     {
         $contact = Contact::findOrFail($id);
@@ -110,12 +81,7 @@ class ContactController extends Controller
             ->with('success', 'Contact updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function destroy($id)
     {
         $contact = Contact::findOrFail($id);
@@ -125,25 +91,15 @@ class ContactController extends Controller
             ->with('success', 'Contact deleted successfully.');
     }
 
-    /**
-     * Show the XML import form.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function importForm()
     {
         return view('contacts.import');
     }
 
-    /**
-     * Import contacts from XML file.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function import(Request $request)
     {
-        // Basic file validation with more flexible approach
         $validator = Validator::make($request->all(), [
             'xml_file' => 'required|file|max:2048', // Remove mimes:xml as it's unreliable
         ]);
@@ -156,12 +112,10 @@ class ContactController extends Controller
 
         $xmlFile = $request->file('xml_file');
         
-        // Check if file was uploaded
         if (!$xmlFile) {
             return redirect()->back()->with('error', 'No file was uploaded.');
         }
         
-        // Check file extension manually for better reliability
         $allowedExtensions = ['xml'];
         $fileExtension = strtolower($xmlFile->getClientOriginalExtension());
         
@@ -169,14 +123,12 @@ class ContactController extends Controller
             return redirect()->back()->with('error', 'Please upload a valid XML file.');
         }
 
-        // Check if file is empty
         if ($xmlFile->getSize() == 0) {
             return redirect()->back()->with('error', 'The uploaded XML file is empty.');
         }
 
         $xmlContent = file_get_contents($xmlFile->getPathname());
         
-        // Check if content was read successfully
         if ($xmlContent === false) {
             return redirect()->back()->with('error', 'Unable to read the uploaded file.');
         }
