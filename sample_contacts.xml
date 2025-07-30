@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contacts>
+    <contact>
+        <name>John Doe</name>
+        <phone>+1-555-123-4567</phone>
+        <company>ABC Corporation</company>
+        <address>123 Main Street, Anytown, ST 12345</address>
+    </contact>
+    <contact>
+        <name>Jane Smith</name>
+        <phone>+1-555-987-6543</phone>
+        <company>XYZ Inc</company>
+        <address>456 Oak Avenue, Another City, ST 67890</address>
+    </contact>
+    <contact>
+        <name>Bob Johnson</name>
+        <phone></phone>
+        <company>Tech Solutions LLC</company>
+        <address></address>
+    </contact>
+    <contact>
+        <name>Alice Brown</name>
+        <phone>+1-555-444-3333</phone>
+        <company>Digital Marketing Pro</company>
+        <address>789 Pine Street, Tech City, CA 90210</address>
+    </contact>
+</contacts>
